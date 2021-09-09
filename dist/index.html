@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tailwind and Alpine</title>
+        <title>OCR Parser</title>
         <link rel="stylesheet" href="/index.769bb7ac.css"><script src="/index.82496ab1.js" defer="">// modules are defined as an array
 // [ module function, map of requires ]
 //
@@ -461,9 +461,49 @@ function hmrAcceptRun(bundle, id) {
 },{}]},["lvMGo"], null, "parcelRequire94c2")
 
 </script></head>
-    <body>
-        <div class="text-5xl text-red-700">
-            <span>Hello, world</span>
+    <body style="font-family: 'Source Sans Pro', sans-serif">
+        <section class="py-8">
+            <div class="container max-w-7xl mx-auto m-8">
+                <h1 class="
+                        w-full
+                        my-2
+                        text-5xl
+                        leading-tight
+                        text-center text-gray-800
+                    ">
+                    OCR PARSER
+                </h1>
+            </div>
+        </section>
+        <div class="container max-w-7xl h-52 mx-auto">
+            <div class="
+                    content-center
+                    h-full
+                    grid grid-cols-3
+                    gap-5
+                    border-solid border-2 border-light-blue-500
+                ">
+                <div class="
+                        h-full
+                        px-4
+                        py-6
+                        bg-white
+                        rounded-lg
+                        tracking-wide
+                        rounded-md
+                        flex
+                    ">
+                    <input type="file" class="" id="inputfile">
+                </div>
+
+                <div class="rounded-md flex items-center justify-center">
+                    <pre class="w-full text-xl" id="output"></pre>
+                </div>
+
+                <div class="rounded-md flex items-center content-center px-6">
+                    <p class="w-full text-5xl text-gray-800 tracking-wide" id="result"></p>
+                </div>
+            </div>
         </div>
     </body>
 </html>

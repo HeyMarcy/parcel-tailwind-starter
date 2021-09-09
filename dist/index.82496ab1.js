@@ -456,6 +456,60 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"hwBw6":[function(require,module,exports) {
 var _tailwindCss = require("./css/tailwind.css");
+// prettier-ignore
+const digitsKey = {
+    0: `\n _ \n| |\n|_|`,
+    1: `\n    \n |\n |`,
+    2: `\n _ \n _|\n|_ `,
+    3: `\n _ \n _|\n _|`,
+    4: `\n|_|\n  |`,
+    5: `\n _ \n|_ \n _|`,
+    6: `\n _ \n|_ \n|_|`,
+    7: `\n _ \n  |\n  |`,
+    8: `\n _ \n|_|\n|_|`,
+    9: `\n _ \n|_|\n _|`
+};
+function parseKey(digitsKey1) {
+    let digitsArrayKey = [];
+    Object.values(digitsKey1).map((value, index)=>{
+        digitsArrayKey[index] = value.replace(/(\r\n|\n|\r)/gm, '');
+    });
+    return digitsArrayKey;
+}
+function parseAccountNumber(accountNumStrings) {
+    let digitsArrayAccNo = [];
+    let lines = accountNumStrings.split('\n');
+    console.log('lines', lines);
+    lines.pop() // removes blank line
+    ;
+    for(let i = 0; i < lines[0].length; i += 3){
+        let digitString = lines.map((line)=>line.slice(i, i + 3)
+        ).join('');
+        digitsArrayAccNo.push(digitString);
+    }
+    return digitsArrayAccNo;
+}
+const parsedKey = parseKey(digitsKey);
+// const parsedAccountNumber = parseAccountNumber(accountNumStrings)
+const getAccountNumber = (parsedKey1, parsedAccountNumber)=>{
+    const result = [];
+    console.log('parsedKey[3]', parsedKey1[3]);
+    console.log('parsedAccountNumber[1]', parsedAccountNumber[1]);
+    parsedAccountNumber.map((digit)=>{
+        result.push(parsedKey1.indexOf(digit));
+    });
+    return result.join('');
+};
+// console.log('getAccountNumber', getAccountNumber(parsedKey,parseAccountNumber(accountNumStrings) ))
+document.getElementById('inputfile').addEventListener('change', function() {
+    var fr = new FileReader();
+    fr.onload = function() {
+        document.getElementById('output').textContent = fr.result;
+        document.getElementById('result').textContent = getAccountNumber(parsedKey, parseAccountNumber(fr.result));
+        console.log('getAccountNumber', getAccountNumber(parsedKey, parseAccountNumber(fr.result)));
+    };
+    fr.readAsText(this.files[0]);
+});
 
 },{"./css/tailwind.css":"ekdgi"}],"ekdgi":[function() {},{}]},["5cYkb","hwBw6"], "hwBw6", "parcelRequire94c2")
 
